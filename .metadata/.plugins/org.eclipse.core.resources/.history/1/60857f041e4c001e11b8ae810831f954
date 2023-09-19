@@ -1,0 +1,20 @@
+package com.pradiptosoft.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.pradiptosoft.Binding.User;
+
+@Controller
+public class UserController {
+
+	public UserController() {
+		super();
+	}
+	
+	@GetMapping("/login")
+	public String login(){
+		return "login";
+	}
+}

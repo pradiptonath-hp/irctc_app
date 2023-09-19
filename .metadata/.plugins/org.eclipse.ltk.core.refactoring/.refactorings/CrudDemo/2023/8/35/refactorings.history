@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;repo2&apos; from expression &apos;repo&apos;&#x0D;&#x0A;- Original project: &apos;CrudDemo&apos;&#x0D;&#x0A;- Variable name: &apos;repo2&apos;&#x0D;&#x0A;- Destination method: &apos;com.pradiptoit.CrudDemoApplicationTests.deleteData()&apos;&#x0D;&#x0A;- Variable expression: &apos;repo&apos;&#x0D;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;repo2&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;com.pradiptoit{CrudDemoApplicationTests.java" name="repo2" replace="true" selection="722 4" stamp="1693124624331" varType="false" version="1.0"/>
+</session>

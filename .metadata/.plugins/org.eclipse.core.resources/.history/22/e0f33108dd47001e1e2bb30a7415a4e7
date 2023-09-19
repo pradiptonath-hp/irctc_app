@@ -1,0 +1,40 @@
+package com.marketingApp.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.marketingApp.*;
+import com.marketingApp.dto.LeadDto;
+import com.marketingApp.entities.Leads;
+import com.marketingApp.service.LeadService;
+
+@Controller
+public class LeadController {
+	
+	@Autowired
+	private LeadService leadService;
+	
+	@RequestMapping("/create")   
+	public String viewCreateleadFrom() {
+		return "create_lead";//Req Dispatcher
+	}
+	
+	/*@RequestMapping("/saveReg")
+	public String saveOneLead(@ModelAttribute Leads lead,ModelMap model) {
+		model.addAttribute("msg","Lead is saved!!");
+		leadService.saveReg(lead);
+		return "create_lead";
+	}*/
+	@RequestMapping("/saveReg")
+	public String saveOneLead(LeadDto dto,Model model) {
+		Leads lead = new Leads();
+		model.addAttribute("msg","Lead is saved!!");
+		leadService.saveReg(dto);
+		return "create_lead";
+	}
+}
+
+

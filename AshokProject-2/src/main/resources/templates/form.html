@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            background-color: rgb(0, 128, 255);
+            color: #fff;
+            padding: 10px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Change submit button background color here */
+        input[type="submit"] {
+            background-color: rgb(192, 192, 192); /* Change to your suitable color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(0, 128, 255); /* Change hover background color to a slightly darker shade */
+        }
+
+        /* Style the hyperlink */
+        a {
+            display: inline-block;
+            background-color: #007bff; /* Blue color for the hyperlink */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        
+        
+         td.error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee Form</h2>
+    <form th:action="@{/save}" th:object="${employee}" method="post">
+        <table>
+            <tr>
+                <td><label for="empName">Name:</label></td>
+                <td><input type="text" id="empName" th:field="*{empName}"></td>
+                <td th:if="${#fields.hasErrors('empName')}" th:errors="*{empName}" class="error-message"></td> 
+
+            </tr>
+            <tr>
+                <td><label for="empDept">Department:</label></td>
+                <td><input type="text" id="empDept" th:field="*{empDept}"></td>
+                <td th:if="${#fields.hasErrors('empDept')}" th:errors="*{empDept}" class="error-message"></td>
+
+
+            </tr>
+            <tr>
+                <td><label for="empSal">Salary:</label></td>
+                <td><input type="number" id="empSal" th:field="*{empSal}"></td>
+				<td th:if="${#fields.hasErrors('empSal')}" th:errors="*{empSal}" class="error-message" ></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <p th:text="${msg}" style="color: green;"></p>
+	<br>
+    <a href="/viewAll">View Employees</a>
+</body>
+</html>

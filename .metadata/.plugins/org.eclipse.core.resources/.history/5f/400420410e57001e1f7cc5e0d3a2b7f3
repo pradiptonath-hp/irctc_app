@@ -1,0 +1,5 @@
+package com.pradipto.service;
+
+public interface TicketService {
+
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Information Form</title>
+<style>
+.form-space {
+            margin-bottom: 3em; /* Adjust the value to control the space */
+        }
+</style>        
+</head>
+<body>
+    <h1>User Information Form</h1>
+   
+    <form th:action="@{/processUser}" method="post" th:object="${user}">
+        <table>
+            <tr>
+                <td><label for="userName">User Name:</label></td>
+                <td><input type="text" id="userName" name="userName" th:field="*{userName}" required/></td>
+            </tr>
+            <tr>
+                <td><label for="userAddr">User Address:</label></td>
+                <td><input type="text" id="userAddr" name="userAddr" th:field="*{userAddr}" required/></td>
+            </tr>
+            <tr>
+                <td><label for="userOffice">User Office:</label></td>
+                <td><input type="text" id="userOffice" name="userOffice" th:field="*{userOffice}" required /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+    
+     <div class="form-space"></div>
+    <a href="/viewUsers">View Users</a>
+</body>
+</html>

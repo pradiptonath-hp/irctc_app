@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+    <!-- Add any CSS styles or links you need -->
+</head>
+<body>
+    <h2>Edit Employee</h2>
+   <form th:action="@{/updateEmployee}" th:object="${employee}" method="post">
+    <div class="form-group">
+        <label for="empName">Name:</label>
+        <input type="text" class="form-control" id="empName" th:field="*{empName}" required>
+    </div>
+    <div class="form-group">
+        <label for="empDept">Department:</label>
+        <input type="text" class="form-control" id="empDept" th:field="*{empDept}" required>
+    </div>
+    <div class="form-group">
+        <label for="empSal">Salary:</label>
+        <input type="number" class="form-control" id="empSal" th:field="*{empSal}" required>
+    </div>
+    	<button type="submit" class="btn btn-primary">Update</button>
+	</form>
+
+    <a href="/viewAll">Back to Employee List</a>
+</body>
+</html>

@@ -1,0 +1,5 @@
+package com.pradipto.request;
+
+public class Passenger {
+
+}

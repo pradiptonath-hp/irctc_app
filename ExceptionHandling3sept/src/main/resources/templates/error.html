@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .error-message {
+            font-size: 24px;
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+
+        .try-again-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .try-again-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-message">Some problem occurred, please try later.</div>
+     <p>Exception Reason: <span th:text="${exRsn}"></span></p>
+    <p>Date: <span th:text="${date}"></span></p>
+</body>
+</html>

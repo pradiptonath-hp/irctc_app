@@ -1,0 +1,20 @@
+package com.pradipto.service;
+
+import com.pradipto.Entity.Ticket;
+import com.pradipto.request.Passenger;
+
+public class TicketServiceImpl implements TicketService {
+
+	@Override
+	public Ticket bookTicket(Passenger passenger) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ticket getTicket(Integer ticketNum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

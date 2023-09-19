@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 400px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .print-button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-message">
+        <h1>Success!</h1>
+        <p th:text="${msg}"/>
+        <p>Your data has been processed successfully.</p>
+        <button class="print-button" onclick="window.print()">Print</button>
+
+    </div>
+</body>
+</html>

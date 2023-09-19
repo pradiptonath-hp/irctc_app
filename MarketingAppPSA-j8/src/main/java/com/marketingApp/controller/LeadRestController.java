@@ -1,0 +1,88 @@
+package com.marketingApp.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.marketingApp.dto.LeadDto;
+import com.marketingApp.entities.Leads;
+import com.marketingApp.repositories.LeadRepo;
+
+@RestController
+@RequestMapping("/api/leads")
+public class LeadRestController {
+
+	@Autowired
+	private LeadRepo leadRepo;
+	
+	//localhost:8080/api/leads
+	@GetMapping   
+	public List<Leads> getAllLeads(){
+		List<Leads> leads = leadRepo.findAll();
+		return leads;
+	}
+	//GetMapping will convert all the java objects and convert them into  JSON objects
+	
+	@PostMapping
+	public void saveLead(@RequestBody Leads lead) {
+		leadRepo.save(lead);
+	}
+	//This is saved from postMan api
+
+	//localhost:8080/api/leads/1 // path parameters  @PathParam
+	//localhost:8080/api/leads?id=1  //Query Parameters  @RequestParam
+	@DeleteMapping("{id}")
+	public  void deleteOneLeadById(@PathVariable("id") long id){
+		leadRepo.deleteById(id);
+	}
+	
+	
+	//localhost:8080/api/leads
+	@PutMapping   //UPDATE with DTO
+	public void updateOneLead(@RequestBody LeadDto leadDto) {
+		Leads l= new Leads();
+		l.setId(leadDto.getId());
+		l.setFirstName(leadDto.getFirstName());
+		l.setLastName(leadDto.getLastName());
+		l.setEmail(leadDto.getEmail());
+		l.setMobile(leadDto.getMobile());
+		
+		leadRepo.save(l);
+	}
+	
+	
+	//UPDATE with ENTITY
+	@PutMapping("/{id}")
+    public ResponseEntity<Void> updateOneLead(@PathVariable long id, @RequestBody Leads updatedLead) {
+        // Check if the lead exists
+        if (leadRepo.existsById(id)) {
+            // Set the ID of the updatedLead to match the path variable
+            updatedLead.setId(id);
+            // Save the updated lead
+            leadRepo.save(updatedLead);
+            return ResponseEntity.noContent().build(); // HTTP 204 No Content for success
+        } else {
+            // Handle lead not found
+        	return ResponseEntity.notFound().build(); // HTTP 404 Not Found
+   }
+  }
+	
+	//http://localhost:8080/api/leads/{id}
+	@GetMapping("/{id}")
+	public Leads getLeadById(@PathVariable("id") long id) {
+		Optional<Leads> findById = leadRepo.findById(id);
+		return findById.get();
+	}
+	
+}
+

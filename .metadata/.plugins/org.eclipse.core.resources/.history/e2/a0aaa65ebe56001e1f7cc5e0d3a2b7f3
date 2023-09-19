@@ -1,0 +1,16 @@
+package in.ashokit.main;
+import in.ashokit.binding.*;
+public class App {
+
+	public static void main(String[] args) throws Exception {
+
+	}
+	
+	public void convertToJson() {
+		
+		User user = new User(101,"Ashok","Male",123456L);
+		
+		ObjectMapper
+	}
+
+}
